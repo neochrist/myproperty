@@ -48,15 +48,15 @@ class myproperty:
 
 #### class for testing purposes only !!!
 
-class city:
+class C:
 
-    def __init__(self, city):
-        self.city = city
+    def __init__(self):
+        self.x = x
 
     @myproperty
-    def name(self):
-        return self.__name
+    def x(self):
+        return self.__x 
 
-    @name.setter
-    def name_set(self, name):
-        self.__name = name
+    @x.setter
+    def x_set(self, x):
+        self.__x = x
