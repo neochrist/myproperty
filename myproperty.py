@@ -52,11 +52,11 @@ class C:
 
     @myproperty
     def n(self):
-        return self.__x 
+        return self.x
 
     @n.setter
     def n(self, x):
-        self.__x = x
+        self.x = x
 
 c = C()
 c.n = 3
