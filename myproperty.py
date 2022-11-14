@@ -1,25 +1,19 @@
 class myproperty:
 
-    """
-    custom property class
-    """
     def __init__(self, 
                  fget=None, 
                  fset=None, 
-                 fdel=None,
+                 fdel=None, 
                  doc=None):
 
         self.fget = fget
         self.fset = fset
         self.fdel = fdel
-
-        # if doc is not provided, doc is set to method's docstring
         if doc is None and fget is not None:
             doc = fget.__doc__
-        self.__doc__ = doc 
+        self.__doc__ = doc
 
-
-    def __get__(self, obj):
+    def __get__(self, obj, objtype=None):
         if obj is None:
             return self
         if self.fget is None:
@@ -50,7 +44,7 @@ class myproperty:
 
 class C:
 
-    def __init__(self):
+    def __init__(self, x=None):
         self.x = x
 
     @myproperty
@@ -60,3 +54,8 @@ class C:
     @x.setter
     def x_set(self, x):
         self.__x = x
+
+c = C
+print(c.x)
+c.x = 4
+print(c.x)
