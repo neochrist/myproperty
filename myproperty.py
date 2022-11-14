@@ -14,6 +14,8 @@ class myproperty:
         self.__doc__ = doc
 
     def __get__(self, obj, objtype=None):
+
+        print("getter is called")
         if obj is None:
             return self
         if self.fget is None:
@@ -21,8 +23,9 @@ class myproperty:
         return self.fget(obj)
 
     def __set__(self, obj, value):
-        if self.fset is None:
-            raise AttributeError("can't set attribute")
+        print("setter is called")
+        #if self.fset is None:
+         #   raise AttributeError("can't set attribute")
         self.fset(obj, value)
 
     def __delete__(self, obj):
@@ -48,14 +51,14 @@ class C:
         self.x = x
 
     @myproperty
-    def x(self):
+    def n(self):
         return self.__x 
 
-    @x.setter
-    def x_set(self, x):
+    @n.setter
+    def n(self, x):
         self.__x = x
 
-c = C
-print(c.x)
-c.x = 4
-print(c.x)
+c = C()
+c.n = 3
+print(c.n)
+print(type(C.n))
